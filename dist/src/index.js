@@ -13,11 +13,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const login_1 = __importDefault(require("../routes/api/login"));
+require('dotenv').config();
 const app = (0, express_1.default)();
-const port = 3000;
+const port = process.env.PORT || 3000;
 // Body parsing Middleware
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
+app.use('/login', login_1.default);
 app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     return res.status(200).send({
         message: "Hello World!",

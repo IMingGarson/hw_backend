@@ -1,11 +1,14 @@
 import express, { Application, Request, Response } from "express";
+import login from '../routes/api/login';
+require('dotenv').config();
 
 const app: Application = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Body parsing Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use('/login', login);
 
 app.get(
     "/",
