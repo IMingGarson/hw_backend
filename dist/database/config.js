@@ -3,14 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.connect = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const users_model_1 = require("./models/users.model");
+require("dotenv/config");
 const connect = () => {
-    const hostName = process.env.HOST || 'localhost';
-    const userName = process.env.USER || 'localhost';
-    const password = process.env.PASSWORD || '';
-    const database = process.env.DB || '';
+    const hostName = process.env.LOCAL_DB_HOST || process.env.HOST || 'localhost';
+    const userName = process.env.LOCAL_DB_USER || process.env.USER || 'localhost';
+    const password = ''; //process.env.PASSWORD || '';
+    const database = process.env.LOCAL_DB || process.env.DB || '';
     const dialect = process.env.DIALECT || 'postgres';
-    console.log('dialect  ', dialect);
-    const operatorsAliases = false;
+    const operatorsAliases = 0;
     const sequelize = new sequelize_typescript_1.Sequelize(database, userName, password, {
         host: hostName,
         dialect,

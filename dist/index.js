@@ -28,13 +28,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const http = __importStar(require("http"));
 const app_1 = __importDefault(require("./app"));
-const PORT = process.env.PROT || 3000;
+require("dotenv/config");
+const PORT = process.env.PORT || 3000;
 app_1.default.set("port", PORT);
 const server = http.createServer(app_1.default);
 server.listen(PORT);
 server.on("listening", function () {
     const addr = server.address();
     const bind = (typeof addr === "string") ? `pipe ${addr}` : `port ${PORT}`;
-    console.info(`Listening on ${bind}`, null);
+    console.info(`Listening on ${bind}`);
 });
 module.exports = app_1.default;

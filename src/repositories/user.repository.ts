@@ -7,9 +7,7 @@ export class UserRepository {
 
     constructor() {
         this.db = connect();
-        this.db.sequelize.sync({ force: true }).then(() => {
-            console.log("Drop and re-sync db.");
-        });
+        this.db.sequelize.sync();
         this.userRepo = this.db.sequelize.getRepository(Users);
     }
 

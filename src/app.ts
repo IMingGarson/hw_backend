@@ -20,6 +20,9 @@ class App {
     }
 
     private routes(): void {
+        this.express.get('/', (req, res) => {
+            res.status(200).send('Hello World');
+        });
         this.express.get('/api/users', (req, res) => {
             this.userController.getUsers().then(data => res.json(data));
         });

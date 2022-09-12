@@ -1,17 +1,15 @@
 import { Sequelize } from 'sequelize-typescript'
 import { Users } from './models/users.model';
+require("dotenv/config");
 
 export const connect = () => {
-
-    const hostName: string = process.env.HOST || 'localhost';
-    const userName: string = process.env.USER || 'localhost';
-    const password: string = process.env.PASSWORD || '';
-    const database: string = process.env.DB || '';
+    const hostName: string = process.env.LOCAL_DB_HOST || process.env.HOST || 'localhost';
+    const userName: string = process.env.LOCAL_DB_USER || process.env.USER || 'localhost';
+    const password: string = ''; //process.env.PASSWORD || '';
+    const database: string = process.env.LOCAL_DB || process.env.DB || '';
     const dialect: any = process.env.DIALECT || 'postgres';
 
-    console.log('dialect  ', dialect)
-
-    const operatorsAliases: any = false;
+    const operatorsAliases: any = 0;
 
     const sequelize = new Sequelize(database, userName, password, {
         host: hostName,

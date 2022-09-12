@@ -16,9 +16,7 @@ class UserRepository {
     constructor() {
         this.db = {};
         this.db = (0, config_1.connect)();
-        this.db.sequelize.sync({ force: true }).then(() => {
-            console.log("Drop and re-sync db.");
-        });
+        this.db.sequelize.sync();
         this.userRepo = this.db.sequelize.getRepository(users_model_1.Users);
     }
     getUsers() {

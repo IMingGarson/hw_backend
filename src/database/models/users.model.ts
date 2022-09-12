@@ -1,27 +1,30 @@
-import { Table, Column, Model, HasMany } from 'sequelize-typescript'
+import { Table, Column, Model } from 'sequelize-typescript'
 
 @Table
 export class Users extends Model {
   
-  @Column
-  id: BigInteger;
+  @Column({ primaryKey: true })
+  id!: number;
 
   @Column
-  account: string;
+  account!: string;
 
   @Column
-  password: string;
+  password!: string;
 
   @Column
-  username: string;
+  username!: string;
 
   @Column
-  last_login: string;
+  last_login_at: Date;
 
   @Column
-  created_at: string;
+  created_at: Date;
 
   @Column
-  updated_at: string;
+  updated_at: Date;
+
+  @Column
+  delete_at: Date;
   
 }
