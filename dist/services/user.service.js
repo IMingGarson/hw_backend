@@ -8,14 +8,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const router = express_1.default.Router();
-router.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-}));
-router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-}));
-exports.default = router;
+exports.UserService = void 0;
+const user_repository_1 = require("../repositories/user.repository");
+class UserService {
+    constructor() {
+        this.userRepo = new user_repository_1.UserRepository();
+    }
+    getUsers() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.userRepo.getUsers();
+        });
+    }
+}
+exports.UserService = UserService;

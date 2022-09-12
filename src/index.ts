@@ -1,28 +1,16 @@
-import express, { Application, Request, Response } from "express";
-import login from '../routes/api/login';
-require('dotenv').config();
+import * as http from "http";
+import App from "./app";
 
-const app: Application = express();
-const port = process.env.PORT || 3000;
+const PORT = process.env.PROT || 3000;
+App.set("port", PORT);
 
-// Body parsing Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use('/login', login);
+const server = http.createServer(App);
+server.listen(PORT);
 
-app.get(
-    "/",
-    async (req: Request, res: Response): Promise<Response> => {
-        return res.status(200).send({
-            message: "Hello World!",
-        });
-    }
-);
+server.on("listening", function(): void {
+    const addr = server.address();
+    const bind = (typeof addr === "string") ? `pipe ${addr}` : `port ${PORT}`;
+    console.info(`Listening on ${bind}`, null);
+});
 
-try {
-    app.listen(port, (): void => {
-        console.log(`Connected successfully on port ${port}`);
-    });
-} catch (error: any) {
-    console.error(`Error occured: ${error?.message}`);
-}
+module.exports = App;
