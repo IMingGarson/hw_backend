@@ -8,22 +8,22 @@ exports.up = pgm => {
         account: {type: 'varchar(1023)', notNull: true },
         password: { type: 'varchar(2047)', notNull: true  },
         username: { type: 'varchar(255)', default: "" },
-        last_login_at: {
+        lastLoginAt: {
             type: 'timestamp',
             notNull: true,
             default: pgm.func('current_timestamp'),
         },
-        updated_at: {
+        updatedAt: {
             type: 'timestamp',
             notNull: true,
             default: pgm.func('current_timestamp'),
         },
-        created_at: {
+        createdAt: {
             type: 'timestamp',
             notNull: true,
             default: pgm.func('current_timestamp'),
         },
-        delete_at: {
+        deleteAt: {
             type: 'timestamp',
             default: null,
         }

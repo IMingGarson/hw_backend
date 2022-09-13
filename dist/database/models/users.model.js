@@ -14,7 +14,10 @@ const sequelize_typescript_1 = require("sequelize-typescript");
 let Users = class Users extends sequelize_typescript_1.Model {
 };
 __decorate([
-    (0, sequelize_typescript_1.Column)({ primaryKey: true }),
+    (0, sequelize_typescript_1.Column)({
+        primaryKey: true,
+        autoIncrement: true,
+    }),
     __metadata("design:type", Number)
 ], Users.prototype, "id", void 0);
 __decorate([
@@ -32,20 +35,10 @@ __decorate([
 __decorate([
     sequelize_typescript_1.Column,
     __metadata("design:type", Date)
-], Users.prototype, "last_login_at", void 0);
-__decorate([
-    sequelize_typescript_1.Column,
-    __metadata("design:type", Date)
-], Users.prototype, "created_at", void 0);
-__decorate([
-    sequelize_typescript_1.Column,
-    __metadata("design:type", Date)
-], Users.prototype, "updated_at", void 0);
-__decorate([
-    sequelize_typescript_1.Column,
-    __metadata("design:type", Date)
-], Users.prototype, "delete_at", void 0);
+], Users.prototype, "lastLoginAt", void 0);
 Users = __decorate([
-    sequelize_typescript_1.Table
+    (0, sequelize_typescript_1.Table)({
+        tableName: 'users'
+    })
 ], Users);
 exports.Users = Users;

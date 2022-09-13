@@ -24,7 +24,7 @@ export const connect = () => {
         }
     });
 
-    sequelize.addModels([Users]);
+    sequelize.addModels([Users])
 
     const db: any = {};
     db.Sequelize = Sequelize;

@@ -22,7 +22,9 @@ class UserRepository {
     getUsers() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const users = yield this.userRepo.findAll();
+                const users = yield this.userRepo.findAll({
+                    attributes: ['id', 'account', 'password', 'username']
+                });
                 return users;
             }
             catch (err) {

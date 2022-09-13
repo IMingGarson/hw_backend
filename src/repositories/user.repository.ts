@@ -13,7 +13,9 @@ export class UserRepository {
 
     async getUsers() {
         try {
-            const users = await this.userRepo.findAll();
+            const users = await this.userRepo.findAll({
+                attributes: ['id', 'account', 'password', 'username']
+            });
             return users;
         } catch (err) {
             console.log('err', err);
